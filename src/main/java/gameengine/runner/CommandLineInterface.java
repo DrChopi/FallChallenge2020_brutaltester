@@ -37,7 +37,7 @@ public class CommandLineInterface {
 			CommandLine cmd = new DefaultParser().parse(options, args);
 
 			if (cmd.hasOption("h") || !cmd.hasOption("p1") || !cmd.hasOption("p2")) {
-				new HelpFormatter().printHelp( "-p1 <player1 command line> -p2 <player2 command line>", options);
+				new HelpFormatter().printHelp( "-p1 <player1 command line> -p2 <player2 command line> -l <log_folder>", options);
 				System.exit(0);
 			}
 
@@ -63,31 +63,30 @@ public class CommandLineInterface {
 
             if (cmd.hasOption("s")) {
 				gameRunner.start();
-			} else {
+			}
 
-				Method initialize = GameRunner.class.getDeclaredMethod("initialize", Properties.class);
-				initialize.setAccessible(true);
-				initialize.invoke(gameRunner, new Properties());
+			Method initialize = GameRunner.class.getDeclaredMethod("initialize", Properties.class);
+			initialize.setAccessible(true);
+			initialize.invoke(gameRunner, new Properties());
 
-				Method runAgents = GameRunner.class.getDeclaredMethod("runAgents");
-				runAgents.setAccessible(true);
-				runAgents.invoke(gameRunner);
+			Method runAgents = GameRunner.class.getDeclaredMethod("runAgents");
+			runAgents.setAccessible(true);
+			runAgents.invoke(gameRunner);
 
-				if (cmd.hasOption("l")) {
-					Method getJSONResult = GameRunner.class.getDeclaredMethod("getJSONResult");
-					getJSONResult.setAccessible(true);
+			if (cmd.hasOption("l")) {
+				Method getJSONResult = GameRunner.class.getDeclaredMethod("getJSONResult");
+				getJSONResult.setAccessible(true);
 
-					Files.asCharSink(Paths.get(cmd.getOptionValue("l")).toFile(), Charset.defaultCharset())
-							.write((String) getJSONResult.invoke(gameRunner));
-				}
+				Files.asCharSink(Paths.get(cmd.getOptionValue("l")).toFile(), Charset.defaultCharset())
+						.write((String) getJSONResult.invoke(gameRunner));
+			}
 
-				for (int i = 0; i < 2; ++i) {
-					System.out.println(result.scores.get(i));
-				}
+			for (int i = 0; i < 2; ++i) {
+				System.out.println(result.scores.get(i));
+			}
 
-				for (String line : result.uinput) {
-					System.out.println(line);
-				}
+			for (String line : result.uinput) {
+				System.out.println(line);
 			}
 
 			// We have to clean players process properly

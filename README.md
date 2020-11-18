@@ -1,21 +1,22 @@
 # Fall Challenge 2020
 
-Fall Challenge 2020 adapation for [brutaltester](https://github.com/dreignier/cg-brutaltester).
+[Fall Challenge 2020](https://github.com/CodinGame/FallChallenge2020) adapation for [brutaltester](https://github.com/dreignier/cg-brutaltester).
 This project is based on work of [fala13](https://github.com/fala13) for **LegendsOfCodeAndMagic**.
 
 ## Prerequisite
 
+- [Java JDK](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html).
+- [Maven](https://maven.apache.org/download.cgi) Apache tool.
 - [cg-brutaltester](https://github.com/dreignier/cg-brutaltester) tool.
-- [Fall Challenge 2020](https://github.com/CodinGame/FallChallenge2020) original game.
 
 ## Installation
 
-- `cd FallChallenge2020-main`
+- `cd <project>`
 - `mvn clean install package`
 
 ## Usage
 
-You can rename the `.jar` file named `fall-2020-1.0-SNAPSHOT.jar` in `src/target`
+You can rename the `.jar` file named `fall-2020-1.0-SNAPSHOT.jar` in `/target`
 Now your can do for example :
 
 ```bash
