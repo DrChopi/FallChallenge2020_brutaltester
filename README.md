@@ -10,7 +10,6 @@ This project is based on work of [fala13](https://github.com/fala13) for **Legen
 
 ## Installation
 
-- Replace files of **Fall Challenge 2020** by files of project.
 - `cd FallChallenge2020-main`
 - `mvn clean install package`
 

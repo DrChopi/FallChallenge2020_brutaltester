@@ -19,8 +19,8 @@ import com.codingame.gameengine.runner.dto.GameResultDto;
 import com.google.common.io.Files;
 
 public class CommandLineInterface {
-    static String JOHNNY_PICTURE 	= "https://static.codingame.com/servlet/fileservlet?id=14267188816585&format=ide_menu_avatar";
-	static String NMAHOUDE_PICTURE 	= "https://static.codingame.com/servlet/fileservlet?id=9701936828280&format=ide_menu_avatar";
+    static String P1_PICTURE 	= "http://localhost:8888/p1.jpg";
+	static String P2_PICTURE 	= "http://localhost:8888/p2.jpg";
 
 	public static void main(String[] args) {
 		try {
@@ -48,8 +48,8 @@ public class CommandLineInterface {
             gameRunner.setLeagueLevel(3);
 
             //Add players
-            gameRunner.addAgent(cmd.getOptionValue("p1"), "Kotake", JOHNNY_PICTURE);
-            gameRunner.addAgent(cmd.getOptionValue("p2"), "Koume", NMAHOUDE_PICTURE);
+            gameRunner.addAgent(cmd.getOptionValue("p1"), "Player1 - Kotake", P1_PICTURE);
+            gameRunner.addAgent(cmd.getOptionValue("p2"), "Player2 - Koume", P2_PICTURE);
 
             if (cmd.hasOption("d")) {
                 String[] parse = cmd.getOptionValue("d").split("=", 0);
